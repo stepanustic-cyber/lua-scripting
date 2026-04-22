@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Логические операторы Lua</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .top-nav {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .code-window {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: "Consolas", monospace;
+            font-size: 1.05em;
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        .comment { color: #5c6370; font-style: italic; }
+        .keyword { color: #c678dd; }
+        .number { color: #d19a66; }
+        .string { color: #98c379; }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-nav">
+            <a href="index.html" class="nav-link">← Назад к содержанию</a>
+        </div>
+        
+        <h1>5.4. Логические операторы</h1>
+
+        <p>Кроме арифметических и битовых, в Lua существуют текстовые логические операторы: <strong>and</strong> (И), <strong>or</strong> (ИЛИ) и <strong>not</strong> (НЕ).</p>
+        
+        <p>Все логические операторы считают <code>false</code> и <code>nil</code> как <strong>false</strong> («логический 0»), а все остальное — как <strong>true</strong> («логическая 1»). Оператор отрицания <code>not</code> всегда возвращает булево значение, инвертируя переменную.</p>
+
+        <h3>Пример кода:</h3>
+        <div class="code-window">
+            <span class="keyword">local</span> a = <span class="keyword">true</span><br>
+            <span class="keyword">local</span> b = <span class="keyword">false</span><br><br>
+
+            <span class="comment">-- Оператор not (НЕ)</span><br>
+            print(<span class="keyword">not</span> a)      <span class="comment">-- false</span><br>
+            print(<span class="keyword">not</span> b)      <span class="comment">-- true</span><br>
+            print(<span class="keyword">not</span> <span class="keyword">nil</span>)    <span class="comment">-- true (nil считается за false)</span><br>
+            print(<span class="keyword">not</span> <span class="number">0</span>)      <span class="comment">-- false (в Lua число 0 — это true)</span><br><br>
+
+            <span class="comment">-- Оператор and (И)</span><br>
+            <span class="comment">-- Возвращает первый аргумент, если он false/nil, иначе второй</span><br>
+            print(<span class="keyword">true</span> <span class="keyword">and</span> <span class="string">"привет"</span>)  <span class="comment">-- "привет"</span><br>
+            print(<span class="keyword">false</span> <span class="keyword">and</span> <span class="string">"привет"</span>) <span class="comment">-- false</span><br>
+            print(<span class="number">10</span> <span class="keyword">and</span> <span class="number">20</span>)          <span class="comment">-- 20</span><br><br>
+
+            <span class="comment">-- Оператор or (ИЛИ)</span><br>
+            <span class="comment">-- Возвращает первый аргумент, если он true, иначе второй</span><br>
+            print(<span class="keyword">true</span> <span class="keyword">or</span> <span class="string">"пока"</span>)     <span class="comment">-- true</span><br>
+            print(<span class="keyword">false</span> <span class="keyword">or</span> <span class="string">"пока"</span>)    <span class="comment">-- "пока"</span><br>
+            print(<span class="keyword">nil</span> <span class="keyword">or</span> <span class="number">5</span>)           <span class="comment">-- 5</span>
+        </div>
+
+        <div class="navigation">
+            <a href="bitwise.html" class="btn">← Предыдущая тема</a>
+            <a href="functions.html" class="btn">Следующая тема →</a>
+        </div>
+    </div>
+
+</body>
+</html>

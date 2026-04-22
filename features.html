@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Общие характеристики Lua</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .top-nav {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Выделение важных терминов */
+        .highlight {
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-nav">
+            <a href="index.html" class="nav-link">← Назад к содержанию</a>
+        </div>
+        
+        <h1>2. Общие характеристики</h1>
+
+        <p>Язык предназначен для использования в качестве отдельного либо встроенного в приложение скриптового языка. Он изначально создавался достаточно простым и компактным, чтобы поместиться на различных платформах и обеспечить приемлемую производительность. Также при проектировании учитывались требования простоты обучения и возможности использования не профессиональными программистами.</p>
+
+        <p>Lua — это <span class="highlight">процедурный динамически типизированный модульный язык</span> с автоматическим управлением памятью. Включает базовые элементы для поддержки функционального и объектного стилей программирования. Таким образом, язык можно считать <span class="highlight">мультипарадигменным</span>. Встроенные средства параллельного программирования позволяют писать многопоточные программы только средствами языка, не обращаясь к API операционной системы или внешним библиотекам. Так как основным назначением Lua является встраивание, он имеет эффективные средства межъязыкового взаимодействия, ориентированные на вызов библиотек Си.</p>
+
+        <p>Язык поддерживает небольшое количество встроенных типов данных: логические значения, числа, строки, функции, потоки. Типичные комбинированные структуры данных, такие как массивы, наборы, списки и записи, отсутствуют, вместо всех их используется одна базовая структура Lua — <span class="highlight">таблица</span>. Отдельный тип <span class="highlight">userdata</span> предназначен специально для низкоуровневого программирования. Функции в Lua являются объектами первого класса, могут присваиваться и передаваться в параметрах. Поддерживаются замыкания, есть возможность создания функций высших порядков.</p>
+
+        <p>Вообще, Lua стремится обеспечить гибкие метафункции, которые могут быть расширены по мере необходимости, а не поставлять набор функций, специфичных для конкретной парадигмы программирования. Как результат, основа языка проста и легко адаптируема к большинству приложений. Предоставляя минимальный набор базовых средств, Lua пытается найти баланс между мощностью и размером.</p>
+
+        <div class="navigation">
+            <a href="versions.html" class="btn">← Предыдущая тема</a>
+            <a href="datatypes.html" class="btn">Следующая тема →</a>
+        </div>
+    </div>
+
+</body>
+</html>

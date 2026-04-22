@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Начало разработки Lua</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .top-nav {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Оформление списка ключевых фактов */
+        .facts-box {
+            background-color: #f8fbff;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .facts-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .facts-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .facts-box li {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .facts-box li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-nav">
+            <a href="index.html" class="nav-link">← Назад к содержанию</a>
+        </div>
+        
+        <h1>1.2. Начало разработки</h1>
+
+        <p>Первоначально Lua был разработан как набор библиотек для расширения возможностей существующих систем. Однако вскоре стало ясно, что для достижения поставленных целей необходимо создать полноценный язык программирования. В 1993 году была выпущена первая версия Lua, которая включала в себя основные элементы, такие как таблицы, функции и управление памятью. Этот язык был простым и легким, что позволяло встраивать его в различные приложения.</p>
+
+        <div class="facts-box">
+            <h3>Ключевые факты начала разработки:</h3>
+            <ul>
+                <li><strong>Причина создания:</strong> В Бразилии действовали ограничения на импорт иностранного ПО, что подтолкнуло ученых к созданию собственного инструмента для автоматизации инженерных систем.</li>
+                <li><strong>Первая версия:</strong> Lua 1.0 никогда не была публичной. Первая официальная версия, получившая широкое распространение — Lua 1.1, вышла в июле 1994 года.</li>
+                <li><strong>Философия:</strong> Изначально язык проектировался как простой, встраиваемый и имеющий открытый исходный код, чтобы он мог использоваться бесплатно как в академических, так и в коммерческих целях.</li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <a href="background.html" class="btn">← Предыдущая тема</a>
+            <a href="versions.html" class="btn">Следующая тема →</a>
+        </div>
+    </div>
+
+</body>
+</html>

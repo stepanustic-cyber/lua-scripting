@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Битовые операторы Lua</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .top-nav {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .operators-list {
+            list-style: none;
+            padding: 0;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .operators-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .operators-list li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .op-symbol {
+            font-family: "Consolas", monospace;
+            font-weight: bold;
+            color: #d63384;
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .code-window {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: "Consolas", monospace;
+            font-size: 1.05em;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .comment { color: #5c6370; font-style: italic; }
+        .keyword { color: #c678dd; }
+        .number { color: #d19a66; }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-nav">
+            <a href="index.html" class="nav-link">← Назад к содержанию</a>
+        </div>
+        
+        <h1>5.3. Битовые операторы</h1>
+
+        <p>Их существует 4 вида (основных операций):</p>
+
+        <ul class="operators-list">
+            <li><span class="op-symbol">&amp;</span> — битовое И;</li>
+            <li><span class="op-symbol">|</span> — битовое ИЛИ;</li>
+            <li><span class="op-symbol">~</span> — битовое ИЛИ НЕ;</li>
+            <li><span class="op-symbol">&gt;&gt;</span> — правый сдвиг;</li>
+            <li><span class="op-symbol">&lt;&lt;</span> — левый сдвиг.</li>
+        </ul>
+
+        <h3>Пример кода:</h3>
+        <div class="code-window">
+            <span class="keyword">local</span> a = <span class="number">5</span>  <span class="comment">-- в двоичной системе: 0101</span><br>
+            <span class="keyword">local</span> b = <span class="number">3</span>  <span class="comment">-- в двоичной системе: 0011</span><br><br>
+            print(a & b)  <span class="comment">-- Битовое И (AND): 1 (0001)</span><br>
+            print(a | b)  <span class="comment">-- Битовое ИЛИ (OR): 7 (0111)</span><br>
+            print(a ~ b)  <span class="comment">-- Битовое исключающее ИЛИ (XOR): 6 (0110)</span><br><br>
+            <span class="comment">-- Сдвиги</span><br>
+            <span class="keyword">local</span> c = <span class="number">1</span>   <span class="comment">-- 0001</span><br>
+            print(c << <span class="number">2</span>) <span class="comment">-- Сдвиг влево на 2 позиции: 4 (0100)</span><br>
+            print(<span class="number">4</span> >> <span class="number">1</span>) <span class="comment">-- Сдвиг вправо на 1 позицию: 2 (0010)</span><br><br>
+            <span class="comment">-- Унарное отрицание (инверсия бит)</span><br>
+            print(~<span class="number">0</span>)     <span class="comment">-- Инвертирует все биты (результат зависит от разрядности)</span>
+        </div>
+
+        <div class="navigation">
+            <a href="comparison.html" class="btn">← Предыдущая тема</a>
+            <a href="logical.html" class="btn">Следующая тема →</a>
+        </div>
+    </div>
+
+</body>
+</html>

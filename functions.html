@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Функции и таблицы в Lua</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .top-nav { margin-bottom: 20px; }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .code-window {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        pre {
+            font-family: "Consolas", monospace;
+            font-size: 1.05em;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .comment { color: #5c6370; font-style: italic; }
+        .keyword { color: #c678dd; }
+        .number { color: #d19a66; }
+        .string { color: #98c379; }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-nav">
+            <a href="index.html" class="nav-link">← Назад к содержанию</a>
+        </div>
+        
+        <h1>6. Функции и таблицы</h1>
+
+        <h2>Функции</h2>
+        <p>Создание функции начинается с ключевого слова function, за которым следует имя функции и набор параметров в круглых скобках. Например, функция сложения двух чисел выглядит так:</p>
+
+        <div class="code-window">
+<pre><code><span class="keyword">function</span> <span class="number">addNumbers</span>(a, b)
+    <span class="keyword">return</span> a + b
+<span class="keyword">end</span></code></pre>
+        </div>
+
+        <p>Факториал — пример рекурсивной функции. Факториал натурального числа определяется как произведение всех натуральных чисел от 1 до n включительно:</p>
+
+        <div class="code-window">
+<pre><code><span class="comment">-- определение функции факториала</span>
+<span class="keyword">function</span> <span class="number">fact</span> (n)
+ <span class="keyword">if</span> n == <span class="number">0</span> <span class="keyword">then</span>
+  <span class="keyword">return</span> <span class="number">1</span>
+ <span class="keyword">else</span>
+  <span class="keyword">return</span> n * fact(n-<span class="number">1</span>)
+ <span class="keyword">end</span>
+<span class="keyword">end</span>
+print(<span class="string">"enter a number:"</span>)
+a = io.read(<span class="string">"*n"</span>) <span class="comment">-- считывание числа</span>
+print(fact(a)) <span class="comment">-- вывод на терминал</span></code></pre>
+        </div>
+
+        <h2>Таблицы</h2>
+        <p>Таблицы — это динамические ассоциативные массивы. Представляют собой составной тип информации, построенный по принципу массива, состоящего из пар «ключ-значение». Таблицы положены в основу всех пользовательских баз данных. Ключом (индексом) может быть любое значение, кроме nil. Создание таблицы происходит с помощью конструкции { }. При создании многомерных массивах чаще всего встречается реализация по типу «массив массивов».</p>
+        <p>Ниже показано, как реализуются таблицы общего вида, а также различные структуры, массивы, множества:</p>
+
+        <div class="code-window">
+<pre><code><span class="comment">-- 1. Обычный массив (индексация в Lua начинается с 1)</span>
+<span class="keyword">local</span> fruits = {<span class="string">"яблоко"</span>, <span class="string">"банан"</span>, <span class="string">"вишня"</span>}
+print(fruits[<span class="number">1</span>]) <span class="comment">-- "яблоко"</span>
+
+<span class="comment">-- 2. Ассоциативный массив (словарь / объект)</span>
+<span class="keyword">local</span> player = {
+    name = <span class="string">"Ivan"</span>,
+    hp = <span class="number">100</span>,
+    [<span class="string">"level"</span>] = <span class="number">5</span> <span class="comment">-- можно задавать ключи через скобки</span>
+}
+print(player.name) <span class="comment">-- "Ivan"</span>
+
+<span class="comment">-- 3. Множество (Set) — ключи используются для быстрой проверки наличия</span>
+<span class="keyword">local</span> reserved_names = { [<span class="string">"admin"</span>] = <span class="keyword">true</span>, [<span class="string">"root"</span>] = <span class="keyword">true</span>, [<span class="string">"guest"</span>] = <span class="keyword">true</span> }
+<span class="keyword">if</span> reserved_names[<span class="string">"admin"</span>] <span class="keyword">then</span>
+    print(<span class="string">"Имя занято"</span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- 4. Многомерный массив (массив массивов)</span>
+<span class="keyword">local</span> matrix = {
+    {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>},
+    {<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>},
+    {<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>}
+}
+print(matrix[<span class="number">2</span>][<span class="number">3</span>]) <span class="comment">-- 6 (вторая строка, третий столбец)</span>
+
+<span class="comment">-- 5. Добавление и удаление данных</span>
+<span class="keyword">local</span> t = {}
+t.newKey = <span class="string">"value"</span> <span class="comment">-- добавление</span>
+t[<span class="string">"newKey"</span>] = <span class="keyword">nil</span>  <span class="comment">-- удаление (присваивание nil)</span></code></pre>
+        </div>
+
+        <div class="navigation">
+            <a href="logical.html" class="btn">← Предыдущая тема</a>
+            <a href="usage.html" class="btn">Следующая тема →</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Основные версии Lua</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .top-nav {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Стилизация таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 1.1em;
+        }
+
+        table th, table td {
+            padding: 15px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9; /* Зебра для строк */
+        }
+
+        table tr:hover {
+            background-color: #f1f7ff; /* Подсветка строки при наведении */
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-nav">
+            <a href="index.html" class="nav-link">← Назад к содержанию</a>
+        </div>
+        
+        <h1>1.3. Основные версии и их способности</h1>
+
+        <p>С момента своего создания Lua прошел через множество изменений и улучшений. Основные этапы развития языка отражены в приведенной таблице.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Версия</th>
+                    <th>Год выпуска</th>
+                    <th>Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lua 1.0</td>
+                    <td>1993</td>
+                    <td>Первая версия включала в себя основные элементы, такие как таблицы, функции и управление памятью.</td>
+                </tr>
+                <tr>
+                    <td>Lua 2.0</td>
+                    <td>1994</td>
+                    <td>Добавлена поддержка метатаблиц и улучшена производительность. Появилась возможность создавать сложные структуры данных.</td>
+                </tr>
+                <tr>
+                    <td>Lua 3.0</td>
+                    <td>1997</td>
+                    <td>Добавлена поддержка замыканий и улучшена система управления памятью. Функции стали более мощными и гибкими.</td>
+                </tr>
+                <tr>
+                    <td>Lua 4.0</td>
+                    <td>2000</td>
+                    <td>Добавлена поддержка многозадачности, а также улучшения в области обработки ошибок.</td>
+                </tr>
+                <tr>
+                    <td>Lua 5.0 и далее</td>
+                    <td>2003</td>
+                    <td>Добавлена поддержка полноценных модулей. Все последующие версии развивали производительность и синтаксис.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>С тех пор было выпущено несколько новых версий Lua, каждая из которых добавляла новые возможности и улучшала производительность языка.</p>
+
+        <div class="navigation">
+            <a href="start.html" class="btn">← Предыдущая тема</a>
+            <a href="features.html" class="btn">Следующая тема →</a>
+        </div>
+    </div>
+
+</body>
+</html>
