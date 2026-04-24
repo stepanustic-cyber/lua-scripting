@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ключевое слово and в Lua — подробное руководство</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .top-nav {
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #1f618d;
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .keyword-badge {
+            font-family: "Consolas", monospace;
+            background: #e8f4fd;
+            color: #d63384;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .info-box {
+            background: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .info-box strong {
+            color: #2c3e50;
+        }
+
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: "Consolas", monospace;
+            font-size: 0.95em;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .comment { color: #5c6370; font-style: italic; }
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .function { color: #61afef; }
+        .number { color: #d19a66; }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        hr {
+            margin: 30px 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .code-block {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-nav">
+        <a href="../index.html" class="nav-link">← Назад к содержанию</a>
+    </div>
+
+    <div style="text-align: center;">
+        <div class="keyword-badge">🔑 Ключевое слово: and</div>
+    </div>
+    <h1>Логический оператор «И» (and)</h1>
+
+    <p><strong>and</strong> — это один из основных логических операторов в языке Lua. В отличие от многих других языков программирования, оператор <strong>and</strong> в Lua возвращает не булево значение (true/false), а <strong>один из своих операндов</strong>. Это делает его более гибким и мощным инструментом.</p>
+
+    <div class="info-box">
+        <strong>📌 Важно понять:</strong> Оператор <strong>and</strong> реализует механизм «короткого замыкания» (short-circuit evaluation). Это значит, что если первый операнд является <strong>false</strong> или <strong>nil</strong>, то второй операнд даже не вычисляется, так как результат уже известен.
+    </div>
+
+    <h2>📖 Синтаксис и принцип работы</h2>
+    <p>Оператор <strong>and</strong> работает по следующему правилу:</p>
+    <div class="code-block">
+        <span class="comment">-- Общая форма:</span>
+        <span class="keyword">result</span> = <span class="keyword">значение1</span> <span class="keyword">and</span> <span class="keyword">значение2</span>
+
+        <span class="comment">-- Логика работы:</span>
+        <span class="comment">-- Если значение1 == false или nil → возвращается значение1</span>
+        <span class="comment">-- Иначе → возвращается значение2</span>
+    </div>
+
+    <h2>💡 Примеры использования</h2>
+
+    <h3>🔹 Базовое использование с булевыми значениями</h3>
+    <div class="code-block">
+        <span class="keyword">print</span>(<span class="keyword">true</span> <span class="keyword">and</span> <span class="keyword">true</span>)   <span class="comment">--> true</span>
+        <span class="keyword">print</span>(<span class="keyword">true</span> <span class="keyword">and</span> <span class="keyword">false</span>)  <span class="comment">--> false</span>
+        <span class="keyword">print</span>(<span class="keyword">false</span> <span class="keyword">and</span> <span class="keyword">true</span>)  <span class="comment">--> false (первый операнд ложный, второй не вычисляется)</span>
+        <span class="keyword">print</span>(<span class="keyword">false</span> <span class="keyword">and</span> <span class="keyword">false</span>) <span class="comment">--> false</span>
+    </div>
+
+    <h3>🔹 Возврат небулевых значений (особенность Lua)</h3>
+    <div class="code-block">
+        <span class="keyword">local</span> x = <span class="number">10</span>
+        <span class="keyword">local</span> y = <span class="number">20</span>
+        
+        <span class="comment">-- and возвращает второй операнд, если первый истинен</span>
+        <span class="keyword">local</span> result = (x > <span class="number">5</span>) <span class="keyword">and</span> y
+        <span class="keyword">print</span>(result)  <span class="comment">--> 20  (условие истинно, возвращается y)</span>
+        
+        <span class="comment">-- Если условие ложно, возвращается false</span>
+        result = (x > <span class="number">15</span>) <span class="keyword">and</span> y
+        <span class="keyword">print</span>(result)  <span class="comment">--> false</span>
+    </div>
+
+    <h3>🔹 Использование в условных операторах</h3>
+    <div class="code-block">
+        <span class="keyword">local</span> age = <span class="number">25</span>
+        <span class="keyword">local</span> hasLicense = <span class="keyword">true</span>
+        
+        <span class="keyword">if</span> age >= <span class="number">18</span> <span class="keyword">and</span> hasLicense <span class="keyword">then</span>
+            <span class="keyword">print</span>(<span class="string">"Вы можете водить автомобиль"</span>)
+        <span class="keyword">else</span>
+            <span class="keyword">print</span>(<span class="string">"Вы не можете водить автомобиль"</span>)
+        <span class="keyword">end</span>
+    </div>
+
+    <h3>🔹 Идиоматический паттерн: защита от nil (тернарный оператор)</h3>
+    <div class="code-block">
+        <span class="comment">-- В Lua нет тернарного оператора ?:, но and/or заменяют его</span>
+        <span class="keyword">local</span> value = <span class="keyword">nil</span>
+        <span class="keyword">local</span> result = value <span class="keyword">and</span> <span class="string">"Значение есть"</span> <span class="keyword">or</span> <span class="string">"Значение отсутствует"</span>
+        <span class="keyword">print</span>(result)  <span class="comment">--> "Значение отсутствует"</span>
+        
+        <span class="keyword">local</span> value2 = <span class="string">"Hello"</span>
+        result = value2 <span class="keyword">and</span> <span class="string">"Значение есть"</span> <span class="keyword">or</span> <span class="string">"Значение отсутствует"</span>
+        <span class="keyword">print</span>(result)  <span class="comment">--> "Значение есть"</span>
+    </div>
+
+    <h3>🔹 Безопасное обращение к вложенным таблицам</h3>
+    <div class="code-block">
+        <span class="keyword">local</span> user = {
+            name = <span class="string">"Алексей"</span>,
+            profile = {
+                age = <span class="number">30</span>,
+                city = <span class="string">"Москва"</span>
+            }
+        }
+        
+        <span class="comment">-- Безопасная проверка существования вложенного поля</span>
+        <span class="keyword">local</span> userCity = user.profile <span class="keyword">and</span> user.profile.city
+        <span class="keyword">print</span>(userCity)  <span class="comment">--> Москва</span>
+        
+        <span class="comment">-- Если бы user.profile не существовало, ошибки бы не было</span>
+        <span class="keyword">local</span> user2 = { name = <span class="string">"Мария"</span> }
+        <span class="keyword">local</span> missingCity = user2.profile <span class="keyword">and</span> user2.profile.city
+        <span class="keyword">print</span>(missingCity)  <span class="comment">--> nil  (ошибки нет!)</span>
+    </div>
+
+    <h2>🎯 Особенности и подводные камни</h2>
+    <div class="info-box">
+        <strong>⚠️ Важно помнить:</strong><br>
+        • В Lua только <strong>false</strong> и <strong>nil</strong> считаются ложными. <strong>Число 0</strong> и <strong>пустая строка ""</strong> считаются истинными!<br>
+        • Оператор <strong>and</strong> имеет более высокий приоритет, чем <strong>or</strong>.<br>
+        • Используйте скобки для явного указания порядка операций, когда комбинируете and и or.
+    </div>
+
+    <div class="code-block">
+        <span class="comment">-- Число 0 считается true в Lua (в отличие от многих языков!)</span>
+        <span class="keyword">if</span> <span class="number">0</span> <span class="keyword">and</span> <span class="string">"текст"</span> <span class="keyword">then</span>
+            <span class="keyword">print</span>(<span class="string">"Это условие выполнится, так как 0 — истинное значение"</span>)
+        <span class="keyword">end</span>
+        
+        <span class="comment">-- Приоритет: and выше, чем or</span>
+        <span class="keyword">local</span> a = <span class="keyword">true</span> <span class="keyword">or</span> <span class="keyword">false</span> <span class="keyword">and</span> <span class="keyword">false</span>   <span class="comment">-- эквивалентно true or (false and false) → true</span>
+        <span class="keyword">local</span> b = (<span class="keyword">true</span> <span class="keyword">or</span> <span class="keyword">false</span>) <span class="keyword">and</span> <span class="keyword">false</span> <span class="comment">-- (true or false) and false → true and false → false</span>
+    </div>
+
+    <h2>📊 Таблица истинности для and</h2>
+    <div class="code-block">
+        <span class="comment">-- Таблица истинности (с учётом возвращаемых значений)</span>
+        <span class="comment">-- A         B         A and B</span>
+        <span class="comment">-- false     false     false</span>
+        <span class="comment">-- false     true      false</span>
+        <span class="comment">-- true      false     false</span>
+        <span class="comment">-- true      true      true</span>
+        <span class="comment">-- nil       ...       nil</span>
+        <span class="comment">-- 42        10        10   (оба истинны → возвращается второй)</span>
+        <span class="comment">-- "hello"   "world"   "world"</span>
+    </div>
+
+    <h2>⚡ Практические примеры из реального кода</h2>
+    
+    <h3>🔹 Валидация данных</h3>
+    <div class="code-block">
+        <span class="keyword">function</span> <span class="function">processOrder</span>(quantity, price)
+            <span class="comment">-- Проверка что оба аргумента корректны</span>
+            <span class="keyword">if</span> quantity <span class="keyword">and</span> price <span class="keyword">and</span> quantity > <span class="number">0</span> <span class="keyword">and</span> price > <span class="number">0</span> <span class="keyword">then</span>
+                <span class="keyword">return</span> quantity * price
+            <span class="keyword">else</span>
+                <span class="keyword">return</span> <span class="keyword">nil</span>, <span class="string">"Неверные параметры заказа"</span>
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        
+        <span class="keyword">print</span>(processOrder(<span class="number">5</span>, <span class="number">100</span>))  <span class="comment">--> 500</span>
+        <span class="keyword">print</span>(processOrder(<span class="keyword">nil</span>, <span class="number">100</span>)) <span class="comment">--> nil, Неверные параметры заказа</span>
+    </div>
+
+    <h3>🔹 Условное выполнение действий</h3>
+    <div class="code-block">
+        <span class="keyword">local</span> config = {
+            debug = <span class="keyword">true</span>,
+            logLevel = <span class="string">"verbose"</span>
+        }
+        
+        <span class="comment">-- Компактная проверка перед вызовом функции</span>
+        config.debug <span class="keyword">and</span> <span class="keyword">print</span>(<span class="string">"Режим отладки включён, уровень: "</span> .. config.logLevel)
+        
+        <span class="comment">-- Более безопасная версия с проверкой существования</span>
+        config.printStats <span class="keyword">and</span> config.printStats()  <span class="comment">-- вызовется только если функция существует</span>
+    </div>
+
+    <!-- Навигация с одной кнопкой "Вернуться назад" -->
+    <div class="navigation">
+        <a href="../syntax.html" class="btn">← Вернуться назад</a>
+    </div>
+</div>
+
+</body>
+</html>
