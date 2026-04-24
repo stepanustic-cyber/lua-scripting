@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ключевое слово end в Lua — подробное руководство</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.8;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .top-nav {
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #1f618d;
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .keyword-badge {
+            font-family: "Consolas", monospace;
+            background: #e8f4fd;
+            color: #d63384;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .info-box {
+            background: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .info-box strong {
+            color: #2c3e50;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 5px solid #f39c12;
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box strong {
+            color: #e67e22;
+        }
+
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: "Consolas", monospace;
+            font-size: 0.95em;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .comment { color: #5c6370; font-style: italic; }
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .function { color: #61afef; }
+        .number { color: #d19a66; }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        hr {
+            margin: 30px 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        .structure-list {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .structure-list li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .code-block {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-nav">
+        <a href="../index.html" class="nav-link">← Назад к содержанию</a>
+    </div>
+
+    <div style="text-align: center;">
+        <div class="keyword-badge">🔚 Ключевое слово: end</div>
+    </div>
+    <h1>Завершение блоков кода (end)</h1>
+
+    <p><strong>end</strong> — это одно из самых часто встречающихся ключевых слов в языке Lua. Оно используется для <strong>закрытия (завершения) различных структурных блоков кода</strong>. Без <strong>end</strong> интерпретатор Lua не сможет понять, где заканчивается функция, условие или цикл.</p>
+
+    <div class="info-box">
+        <strong>📌 Важно понять:</strong> Ключевое слово <strong>end</strong> работает как «закрывающая скобка» для управляющих конструкций. Каждое <strong>if</strong>, <strong>function</strong>, <strong>for</strong>, <strong>while</strong> и <strong>do</strong> должно иметь своё парное <strong>end</strong>.
+    </div>
+
+    <h2>📖 Где используется end?</h2>
+    
+    <div class="structure-list">
+        <p><strong>Конструкции, требующие завершения через end:</strong></p>
+        <ul>
+            <li><strong>if ... then ... end</strong> — условные операторы</li>
+            <li><strong>function ... end</strong> — объявление функций</li>
+            <li><strong>for ... end</strong> — циклы for</li>
+            <li><strong>while ... end</strong> — циклы while</li>
+            <li><strong>repeat ... until</strong> — <span style="color:#e67e22;">(не требует end, завершается until)</span></li>
+            <li><strong>do ... end</strong> — явные блоки кода</li>
+        </ul>
+    </div>
+
+    <h2>💡 Примеры использования</h2>
+
+    <h3>🔹 Условный оператор if</h3>
+    <div class="code-block">
+        <span class="keyword">local</span> age = <span class="number">18</span>
+        
+        <span class="keyword">if</span> age >= <span class="number">18</span> <span class="keyword">then</span>
+            <span class="keyword">print</span>(<span class="string">"Вы совершеннолетний"</span>)
+        <span class="keyword">else</span>
+            <span class="keyword">print</span>(<span class="string">"Вы несовершеннолетний"</span>)
+        <span class="keyword">end</span>  <span class="comment">-- ← Здесь end закрывает конструкцию if-else</span>
+    </div>
+
+    <h3>🔹 Объявление функции</h3>
+    <div class="code-block">
+        <span class="keyword">function</span> <span class="function">greet</span>(name)
+            <span class="keyword">return</span> <span class="string">"Привет, "</span> .. name
+        <span class="keyword">end</span>  <span class="comment">-- ← end закрывает тело функции</span>
+        
+        <span class="comment">-- Альтернативный синтаксис (как присваивание)</span>
+        <span class="keyword">local</span> <span class="function">goodbye</span> = <span class="keyword">function</span>(name)
+            <span class="keyword">return</span> <span class="string">"До свидания, "</span> .. name
+        <span class="keyword">end</span>
+    </div>
+
+    <h3>🔹 Цикл for (числовой)</h3>
+    <div class="code-block">
+        <span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">5</span> <span class="keyword">do</span>
+            <span class="keyword">print</span>(<span class="string">"Итерация "</span> .. i)
+        <span class="keyword">end</span>  <span class="comment">-- ← end закрывает цикл for</span>
+    </div>
+
+    <h3>🔹 Цикл for (обобщённый — pairs/ipairs)</h3>
+    <div class="code-block">
+        <span class="keyword">local</span> fruits = {<span class="string">"яблоко"</span>, <span class="string">"банан"</span>, <span class="string">"апельсин"</span>}
+        
+        <span class="keyword">for</span> index, value <span class="keyword">in</span> <span class="function">ipairs</span>(fruits) <span class="keyword">do</span>
+            <span class="keyword">print</span>(index .. <span class="string">": "</span> .. value)
+        <span class="keyword">end</span>
+    </div>
+
+    <h3>🔹 Цикл while</h3>
+    <div class="code-block">
+        <span class="keyword">local</span> count = <span class="number">3</span>
+        <span class="keyword">while</span> count > <span class="number">0</span> <span class="keyword">do</span>
+            <span class="keyword">print</span>(<span class="string">"Обратный отсчёт: "</span> .. count)
+            count = count - <span class="number">1</span>
+        <span class="keyword">end</span>  <span class="comment">-- ← end закрывает while</span>
+        <span class="keyword">print</span>(<span class="string">"Пуск!"</span>)
+    </div>
+
+    <h3>🔹 Явный блок do ... end</h3>
+    <div class="code-block">
+        <span class="keyword">local</span> x = <span class="number">10</span>
+        <span class="keyword">do</span>
+            <span class="keyword">local</span> x = <span class="number">20</span>  <span class="comment">-- локальная переменная, видима только внутри блока</span>
+            <span class="keyword">print</span>(x)  <span class="comment">--> 20</span>
+        <span class="keyword">end</span>
+        <span class="keyword">print</span>(x)  <span class="comment">--> 10 (внешняя переменная не изменилась)</span>
+    </div>
+
+    <h2>🔗 Вложенные конструкции</h2>
+    <p>Очень важно правильно закрывать вложенные блоки. Каждый <strong>end</strong> соответствует ближайшему незакрытому <strong>if/function/for/while/do</strong>.</p>
+
+    <div class="code-block">
+        <span class="keyword">function</span> <span class="function">checkNumber</span>(n)
+            <span class="keyword">if</span> n > <span class="number">0</span> <span class="keyword">then</span>
+                <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">then</span>
+                    <span class="keyword">return</span> <span class="string">"положительное чётное"</span>
+                <span class="keyword">else</span>
+                    <span class="keyword">return</span> <span class="string">"положительное нечётное"</span>
+                <span class="keyword">end</span>  <span class="comment">-- закрывает внутренний if</span>
+            <span class="keyword">elseif</span> n < <span class="number">0</span> <span class="keyword">then</span>
+                <span class="keyword">return</span> <span class="string">"отрицательное"</span>
+            <span class="keyword">else</span>
+                <span class="keyword">return</span> <span class="string">"ноль"</span>
+            <span class="keyword">end</span>  <span class="comment">-- закрывает внешний if</span>
+        <span class="keyword">end</span>  <span class="comment">-- закрывает функцию</span>
+        
+        <span class="keyword">print</span>(checkNumber(<span class="number">4</span>))   <span class="comment">--> положительное чётное</span>
+        <span class="keyword">print</span>(checkNumber(<span class="number">-5</span>))  <span class="comment">--> отрицательное</span>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ Частая ошибка:</strong> Пропуск <strong>end</strong> или несоответствие количества <strong>end</strong> количеству открытых блоков приводит к синтаксической ошибке:<br>
+        <code>'end' expected (to close 'function' at line X)</code>
+    </div>
+
+    <h2>📊 Сравнение: repeat ... until vs ... end</h2>
+    <div class="code-block">
+        <span class="comment">-- Цикл repeat ... until НЕ использует end</span>
+        <span class="keyword">local</span> i = <span class="number">1</span>
+        <span class="keyword">repeat</span>
+            <span class="keyword">print</span>(i)
+            i = i + <span class="number">1</span>
+        <span class="keyword">until</span> i > <span class="number">3</span>   <span class="comment">-- ← завершается until, а не end</span>
+        
+        <span class="comment">-- А while ... end — использует</span>
+        <span class="keyword">local</span> j = <span class="number">1</span>
+        <span class="keyword">while</span> j <= <span class="number">3</span> <span class="keyword">do</span>
+            <span class="keyword">print</span>(j)
+            j = j + <span class="number">1</span>
+        <span class="keyword">end</span>        <span class="comment">-- ← а здесь нужен end</span>
+    </div>
+
+    <h2>🎯 Идиоматическое использование do ... end</h2>
+    <p>Блок <strong>do ... end</strong> полезен для изоляции переменных и создания временной области видимости:</p>
+
+    <div class="code-block">
+        <span class="comment">-- Создание сложной временной переменной без загрязнения внешней области</span>
+        <span class="keyword">local</span> result
+        <span class="keyword">do</span>
+            <span class="keyword">local</span> temp = <span class="function">calculateComplexValue</span>()
+            <span class="comment">-- дополнительная обработка temp</span>
+            result = temp * <span class="number">2</span>
+        <span class="keyword">end</span>
+        <span class="comment">-- переменная temp здесь уже недоступна</span>
+    </div>
+
+    <h2>⚡ Практические примеры из реального кода</h2>
+    
+    <h3>🔹 Обработка данных с несколькими условиями</h3>
+    <div class="code-block">
+        <span class="keyword">function</span> <span class="function">getDiscount</span>(userType, purchaseAmount)
+            <span class="keyword">local</span> discount = <span class="number">0</span>
+            
+            <span class="keyword">if</span> userType == <span class="string">"VIP"</span> <span class="keyword">then</span>
+                <span class="keyword">if</span> purchaseAmount >= <span class="number">10000</span> <span class="keyword">then</span>
+                    discount = <span class="number">0.25</span>
+                <span class="keyword">elseif</span> purchaseAmount >= <span class="number">5000</span> <span class="keyword">then</span>
+                    discount = <span class="number">0.15</span>
+                <span class="keyword">else</span>
+                    discount = <span class="number">0.10</span>
+                <span class="keyword">end</span>
+            <span class="keyword">elseif</span> userType == <span class="string">"Regular"</span> <span class="keyword">then</span>
+                <span class="keyword">if</span> purchaseAmount >= <span class="number">5000</span> <span class="keyword">then</span>
+                    discount = <span class="number">0.05</span>
+                <span class="keyword">end</span>
+            <span class="keyword">end</span>
+            
+            <span class="keyword">return</span> discount
+        <span class="keyword">end</span>
+        
+        <span class="keyword">print</span>(getDiscount(<span class="string">"VIP"</span>, <span class="number">12000</span>))  <span class="comment">--> 0.25</span>
+    </div>
+
+    <h3>🔹 Безопасное выполнение с защитой от ошибок</h3>
+    <div class="code-block">
+        <span class="keyword">function</span> <span class="function">safeExecute</span>(fn, ...)
+            <span class="keyword">local</span> status, result = <span class="function">pcall</span>(fn, ...)
+            <span class="keyword">if</span> status <span class="keyword">then</span>
+                <span class="keyword">return</span> result
+            <span class="keyword">else</span>
+                <span class="keyword">print</span>(<span class="string">"Ошибка выполнения: "</span> .. result)
+                <span class="keyword">return</span> <span class="keyword">nil</span>
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        
+        <span class="comment">-- Пример использования</span>
+        <span class="keyword">local</span> riskyFunction = <span class="keyword">function</span>()
+            error(<span class="string">"Что-то пошло не так"</span>)
+        <span class="keyword">end</span>
+        
+        safeExecute(riskyFunction)  <span class="comment">--> Ошибка выполнения: Что-то пошло не так</span>
+    </div>
+
+    <h2>🔧 Отладка: поиск пропущенного end</h2>
+    <div class="info-box">
+        <strong>💡 Совет:</strong> Если интерпретатор выдаёт ошибку <code>'end' expected</code>, используйте отступы (индентацию) для визуального отслеживания вложенности. Каждый уровень вложенности должен увеличивать отступ на пробелы или табуляцию.
+    </div>
+
+    <div class="code-block">
+        <span class="comment">-- ПРАВИЛЬНО (хорошо читается)</span>
+        <span class="keyword">function</span> <span class="function">example</span>()
+            <span class="keyword">if</span> condition1 <span class="keyword">then</span>
+                <span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">10</span> <span class="keyword">do</span>
+                    <span class="comment">-- тело</span>
+                <span class="keyword">end</span>
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        
+        <span class="comment">-- НЕПРАВИЛЬНО (легко пропустить end)</span>
+        <span class="keyword">function</span> <span class="function">badExample</span>()
+        <span class="keyword">if</span> condition1 <span class="keyword">then</span>
+        <span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">10</span> <span class="keyword">do</span>
+        <span class="comment">-- тело</span>
+        <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        <span class="keyword">end</span>
+    </div>
+
+    <!-- Навигация -->
+    <div class="navigation">
+        <a href="../syntax.html" class="btn">← Вернуться назад</a>
+    </div>
+</div>
+
+</body>
+</html>
