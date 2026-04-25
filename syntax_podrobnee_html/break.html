@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>break в Lua — досрочный выход из цикла</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 900px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .top-nav {
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #1f618d;
+            text-decoration: underline;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .keyword-badge {
+            font-family: "Consolas", monospace;
+            background: #e8f4fd;
+            color: #d63384;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: "Consolas", monospace;
+            overflow-x: auto;
+            white-space: pre;
+            tab-size: 4;
+        }
+        .comment { color: #5c6370; font-style: italic; }
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .number { color: #d19a66; }
+        h2 {
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        .info-box {
+            background: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .warning-box {
+            background: #fff3e0;
+            border-left: 5px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            .code-block { font-size: 0.85em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="top-nav">
+        <a href="../index.html" class="nav-link">← Назад к содержанию</a>
+    </div>
+
+    <div style="text-align: center;">
+        <div class="keyword-badge">⛔ Ключевое слово: break</div>
+    </div>
+    <h1>Досрочный выход из цикла (break)</h1>
+
+    <p><strong>break</strong> — это оператор, который немедленно завершает выполнение ближайшего цикла (<strong>while</strong>, <strong>repeat...until</strong> или <strong>for</strong>). После <strong>break</strong> программа продолжает выполнение с первой инструкции после цикла.</p>
+
+    <div class="info-box">
+        <strong>📌 Важно:</strong><br>
+        • <strong>break</strong> работает только внутри циклов<br>
+        • Завершает <strong>только самый внутренний</strong> цикл (не все сразу)<br>
+        • Нельзя использовать вне цикла (будет ошибка)<br>
+        • Обычно используется вместе с условием <strong>if</strong>
+    </div>
+
+    <h2>Примеры</h2>
+
+    <div class="code-block">
+<span class="comment">-- Простейший пример: выход при достижении условия</span>
+<span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">10</span> <span class="keyword">do</span>
+    <span class="keyword">if</span> i == <span class="number">5</span> <span class="keyword">then</span>
+        <span class="keyword">break</span>   <span class="comment">-- выход, когда i станет равно 5</span>
+    <span class="keyword">end</span>
+    <span class="keyword">print</span>(i)
+<span class="keyword">end</span>
+
+<span class="comment">-- Вывод: 1 2 3 4</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- break в цикле while</span>
+<span class="keyword">local</span> i = <span class="number">1</span>
+
+<span class="keyword">while</span> <span class="keyword">true</span> <span class="keyword">do</span>   <span class="comment">-- бесконечный цикл</span>
+    <span class="keyword">print</span>(<span class="string">"Итерация "</span> .. i)
+    
+    <span class="keyword">if</span> i >= <span class="number">3</span> <span class="keyword">then</span>
+        <span class="keyword">break</span>   <span class="comment">-- выход из бесконечного цикла</span>
+    <span class="keyword">end</span>
+    
+    i = i + <span class="number">1</span>
+<span class="keyword">end</span>
+
+<span class="comment">-- Вывод: Итерация 1, Итерация 2, Итерация 3</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- break в цикле repeat...until</span>
+<span class="keyword">local</span> i = <span class="number">1</span>
+
+<span class="keyword">repeat</span>
+    <span class="keyword">print</span>(i)
+    
+    <span class="keyword">if</span> i == <span class="number">3</span> <span class="keyword">then</span>
+        <span class="keyword">break</span>
+    <span class="keyword">end</span>
+    
+    i = i + <span class="number">1</span>
+<span class="keyword">until</span> i > <span class="number">5</span>
+
+<span class="comment">-- Вывод: 1 2 3</span>
+    </div>
+
+    <h2>Поиск элемента в таблице</h2>
+
+    <div class="code-block">
+<span class="comment">-- Классический пример: поиск значения в таблице</span>
+<span class="keyword">local</span> names = { <span class="string">"Анна"</span>, <span class="string">"Иван"</span>, <span class="string">"Мария"</span>, <span class="string">"Пётр"</span>, <span class="string">"Ольга"</span> }
+<span class="keyword">local</span> searchName = <span class="string">"Мария"</span>
+<span class="keyword">local</span> foundIndex = <span class="keyword">nil</span>
+
+<span class="keyword">for</span> i = <span class="number">1</span>, #names <span class="keyword">do</span>
+    <span class="keyword">if</span> names[i] == searchName <span class="keyword">then</span>
+        foundIndex = i
+        <span class="keyword">break</span>   <span class="comment">-- нашли — дальше искать смысла нет</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> foundIndex <span class="keyword">then</span>
+    <span class="keyword">print</span>(searchName .. <span class="string">" найдено на позиции "</span> .. foundIndex)
+<span class="keyword">else</span>
+    <span class="keyword">print</span>(searchName .. <span class="string">" не найдено"</span>)
+<span class="keyword">end</span>
+    </div>
+
+    <h2>break во вложенных циклах</h2>
+
+    <div class="code-block">
+<span class="comment">-- break выходит ТОЛЬКО из внутреннего цикла</span>
+<span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">3</span> <span class="keyword">do</span>
+    <span class="keyword">print</span>(<span class="string">"Внешний цикл: "</span> .. i)
+    
+    <span class="keyword">for</span> j = <span class="number">1</span>, <span class="number">5</span> <span class="keyword">do</span>
+        <span class="keyword">if</span> j == <span class="number">3</span> <span class="keyword">then</span>
+            <span class="keyword">break</span>   <span class="comment">-- выход только из внутреннего цикла</span>
+        <span class="keyword">end</span>
+        <span class="keyword">print</span>(<span class="string">"  Внутренний цикл: "</span> .. j)
+    <span class="keyword">end</span>
+    
+    <span class="keyword">print</span>(<span class="string">"Внешний цикл продолжается"</span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- Вывод:</span>
+<span class="comment">-- Внешний цикл: 1</span>
+<span class="comment">--   Внутренний цикл: 1</span>
+<span class="comment">--   Внутренний цикл: 2</span>
+<span class="comment">-- Внешний цикл продолжается</span>
+<span class="comment">-- Внешний цикл: 2</span>
+<span class="comment">--   Внутренний цикл: 1</span>
+<span class="comment">--   Внутренний цикл: 2</span>
+<span class="comment">-- Внешний цикл продолжается</span>
+<span class="comment">-- Внешний цикл: 3</span>
+<span class="comment">--   Внутренний цикл: 1</span>
+<span class="comment">--   Внутренний цикл: 2</span>
+<span class="comment">-- Внешний цикл продолжается</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Выход из всех циклов (нужен флаг)</span>
+<span class="keyword">local</span> found = <span class="keyword">false</span>
+
+<span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">5</span> <span class="keyword">do</span>
+    <span class="keyword">for</span> j = <span class="number">1</span>, <span class="number">5</span> <span class="keyword">do</span>
+        <span class="keyword">if</span> i * j == <span class="number">12</span> <span class="keyword">then</span>
+            <span class="keyword">print</span>(<span class="string">"Найдено: "</span> .. i .. <span class="string">" * "</span> .. j .. <span class="string">" = 12"</span>)
+            found = <span class="keyword">true</span>
+            <span class="keyword">break</span>   <span class="comment">-- выход из внутреннего цикла</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    
+    <span class="keyword">if</span> found <span class="keyword">then</span>
+        <span class="keyword">break</span>   <span class="comment">-- выход из внешнего цикла</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+    </div>
+
+    <h2>Практические примеры</h2>
+
+    <div class="code-block">
+<span class="comment">-- Обработка пользовательского ввода</span>
+<span class="keyword">local</span> commands = { <span class="string">"start"</span>, <span class="string">"stop"</span>, <span class="string">"help"</span>, <span class="string">"exit"</span> }
+
+<span class="keyword">for</span> i = <span class="number">1</span>, #commands <span class="keyword">do</span>
+    <span class="keyword">if</span> commands[i] == <span class="string">"exit"</span> <span class="keyword">then</span>
+        <span class="keyword">print</span>(<span class="string">"Команда exit найдена, обработка прервана"</span>)
+        <span class="keyword">break</span>
+    <span class="keyword">end</span>
+    <span class="keyword">print</span>(<span class="string">"Обработка команды: "</span> .. commands[i])
+<span class="keyword">end</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Проверка простоты числа</span>
+<span class="keyword">local</span> function <span class="function">isPrime</span>(n)
+    <span class="keyword">if</span> n < <span class="number">2</span> <span class="keyword">then</span>
+        <span class="keyword">return</span> <span class="keyword">false</span>
+    <span class="keyword">end</span>
+    
+    <span class="keyword">for</span> i = <span class="number">2</span>, <span class="function">math.sqrt</span>(n) <span class="keyword">do</span>
+        <span class="keyword">if</span> n % i == <span class="number">0</span> <span class="keyword">then</span>
+            <span class="keyword">return</span> <span class="keyword">false</span>   <span class="comment">-- нашли делитель</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    
+    <span class="keyword">return</span> <span class="keyword">true</span>
+<span class="keyword">end</span>
+
+<span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">20</span> <span class="keyword">do</span>
+    <span class="keyword">if</span> <span class="function">isPrime</span>(i) <span class="keyword">then</span>
+        <span class="keyword">print</span>(i .. <span class="string">" — простое число"</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Игровой цикл с выходом по команде</span>
+<span class="keyword">local</span> score = <span class="number">0</span>
+<span class="keyword">local</span> running = <span class="keyword">true</span>
+
+<span class="keyword">while</span> running <span class="keyword">do</span>
+    <span class="keyword">print</span>(<span class="string">"Ваш счёт: "</span> .. score)
+    <span class="keyword">print</span>(<span class="string">"Введите команду (add, exit):"</span>)
+    
+    <span class="keyword">local</span> cmd = <span class="function">io.read</span>()
+    
+    <span class="keyword">if</span> cmd == <span class="string">"add"</span> <span class="keyword">then</span>
+        score = score + <span class="number">10</span>
+        <span class="keyword">print</span>(<span class="string">"+10 очков!"</span>)
+    <span class="keyword">elseif</span> cmd == <span class="string">"exit"</span> <span class="keyword">then</span>
+        <span class="keyword">print</span>(<span class="string">"Игра завершена. Финальный счёт: "</span> .. score)
+        <span class="keyword">break</span>
+    <span class="keyword">else</span>
+        <span class="keyword">print</span>(<span class="string">"Неизвестная команда"</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Поиск первого отрицательного числа</span>
+<span class="keyword">local</span> numbers = { <span class="number">5</span>, <span class="number">8</span>, <span class="number">-3</span>, <span class="number">10</span>, <span class="number">-1</span>, <span class="number">7</span> }
+<span class="keyword">local</span> firstNegative = <span class="keyword">nil</span>
+<span class="keyword">local</span> negativeIndex = <span class="keyword">nil</span>
+
+<span class="keyword">for</span> i = <span class="number">1</span>, #numbers <span class="keyword">do</span>
+    <span class="keyword">if</span> numbers[i] < <span class="number">0</span> <span class="keyword">then</span>
+        firstNegative = numbers[i]
+        negativeIndex = i
+        <span class="keyword">break</span>   <span class="comment">-- нашли первое отрицательное</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> firstNegative <span class="keyword">then</span>
+    <span class="keyword">print</span>(<span class="string">"Первое отрицательное число: "</span> .. firstNegative ..
+          <span class="string">" на позиции "</span> .. negativeIndex)
+<span class="keyword">else</span>
+    <span class="keyword">print</span>(<span class="string">"Отрицательных чисел нет"</span>)
+<span class="keyword">end</span>
+    </div>
+
+    <h2>Важные особенности</h2>
+
+    <div class="warning-box">
+        <strong>⚠️ break нельзя использовать вне цикла:</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="keyword">function</span> <span class="function">badExample</span>()
+    <span class="keyword">break</span>   <span class="comment">-- ОШИБКА! break вне цикла</span>
+<span class="keyword">end</span>
+
+<span class="comment">-- Правильно: break только внутри for, while, repeat</span>
+<span class="keyword">function</span> <span class="function">goodExample</span>()
+    <span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">10</span> <span class="keyword">do</span>
+        <span class="keyword">if</span> i > <span class="number">5</span> <span class="keyword">then</span>
+            <span class="keyword">break</span>   <span class="comment">-- ✅ можно</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ break в repeat...until:</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="keyword">local</span> i = <span class="number">1</span>
+
+<span class="keyword">repeat</span>
+    <span class="keyword">if</span> i == <span class="number">3</span> <span class="keyword">then</span>
+        <span class="keyword">break</span>   <span class="comment">-- ✅ работает</span>
+    <span class="keyword">end</span>
+    <span class="keyword">print</span>(i)
+    i = i + <span class="number">1</span>
+<span class="keyword">until</span> i > <span class="number">5</span>   <span class="comment">-- условие даже не проверяется, если break сработал</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ break не принимает аргументов:</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="comment">-- Нельзя выйти из нескольких циклов сразу</span>
+<span class="keyword">break</span> <span class="number">2</span>   <span class="comment">-- ОШИБКА! В Lua нет break с числом</span>
+
+<span class="comment">-- Используйте флаг или return</span>
+<span class="keyword">local function <span class="function">search</span>()</span>
+    <span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">10</span> <span class="keyword">do</span>
+        <span class="keyword">for</span> j = <span class="number">1</span>, <span class="number">10</span> <span class="keyword">do</span>
+            <span class="keyword">if</span> i * j == <span class="number">42</span> <span class="keyword">then</span>
+                <span class="keyword">return</span> i, j   <span class="comment">-- выход сразу из функции</span>
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    <span class="keyword">return</span> <span class="keyword">nil</span>
+<span class="keyword">end</span>
+        </div>
+    </div>
+
+    <h2>break vs return</h2>
+
+    <div class="info-box">
+        <strong>📊 Отличия:</strong>
+        <ul>
+            <li><strong>break</strong> — выходит только из цикла, функция продолжает работу</li>
+            <li><strong>return</strong> — выходит из функции целиком, возвращая значение</li>
+            <li><strong>break</strong> нельзя использовать вне цикла</li>
+            <li><strong>return</strong> можно использовать в любом месте функции</li>
+        </ul>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- break vs return</span>
+<span class="keyword">function</span> <span class="function">exampleBreak</span>()
+    <span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">5</span> <span class="keyword">do</span>
+        <span class="keyword">if</span> i == <span class="number">3</span> <span class="keyword">then</span>
+            <span class="keyword">break</span>   <span class="comment">-- выходим из цикла</span>
+        <span class="keyword">end</span>
+        <span class="keyword">print</span>(i)
+    <span class="keyword">end</span>
+    <span class="keyword">print</span>(<span class="string">"Функция продолжается после цикла"</span>)   <span class="comment">-- ✅ выполнится</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> <span class="function">exampleReturn</span>()
+    <span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">5</span> <span class="keyword">do</span>
+        <span class="keyword">if</span> i == <span class="number">3</span> <span class="keyword">then</span>
+            <span class="keyword">return</span>   <span class="comment">-- выход из функции</span>
+        <span class="keyword">end</span>
+        <span class="keyword">print</span>(i)
+    <span class="keyword">end</span>
+    <span class="keyword">print</span>(<span class="string">"Эта строка НЕ выполнится"</span>)
+<span class="keyword">end</span>
+
+exampleBreak()   <span class="comment">--> 1 2 "Функция продолжается после цикла"</span>
+exampleReturn()  <span class="comment">--> 1 2</span>
+    </div>
+
+    <h2>Частые ошибки</h2>
+
+    <div class="warning-box">
+        <strong>❌ break вне цикла:</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="keyword">if</span> x > <span class="number">5</span> <span class="keyword">then</span>
+    <span class="keyword">break</span>   <span class="comment">-- ОШИБКА! break только внутри циклов</span>
+<span class="keyword">end</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>❌ Думать, что break выходит из if:</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">10</span> <span class="keyword">do</span>
+    <span class="keyword">if</span> i == <span class="number">5</span> <span class="keyword">then</span>
+        <span class="keyword">break</span>   <span class="comment">-- выходит из for, а не из if</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>❌ Попытка выйти из нескольких циклов сразу:</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">10</span> <span class="keyword">do</span>
+    <span class="keyword">for</span> j = <span class="number">1</span>, <span class="number">10</span> <span class="keyword">do</span>
+        <span class="keyword">break</span>   <span class="comment">-- выходит только из внутреннего цикла</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">-- Решение: использовать флаг или return</span>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <a href="../syntax.html" class="btn">← Вернуться назад</a>
+    </div>
+</div>
+</body>
+</html>

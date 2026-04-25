@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>or в Lua — логический оператор</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 900px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .top-nav {
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #1f618d;
+            text-decoration: underline;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .keyword-badge {
+            font-family: "Consolas", monospace;
+            background: #e8f4fd;
+            color: #d63384;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: "Consolas", monospace;
+            overflow-x: auto;
+            white-space: pre;
+            tab-size: 4;
+        }
+        .comment { color: #5c6370; font-style: italic; }
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .number { color: #d19a66; }
+        h2 {
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        .info-box {
+            background: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .warning-box {
+            background: #fff3e0;
+            border-left: 5px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            .code-block { font-size: 0.85em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="top-nav">
+        <a href="../index.html" class="nav-link">← Назад к содержанию</a>
+    </div>
+
+    <div style="text-align: center;">
+        <div class="keyword-badge">🔀 Ключевое слово: or</div>
+    </div>
+    <h1>Логический оператор «ИЛИ» (or)</h1>
+
+    <p><strong>or</strong> — это логический оператор в языке Lua. Как и <strong>and</strong>, он возвращает <strong>один из своих операндов</strong>, а не булево значение. В Lua <strong>false</strong> и <strong>nil</strong> считаются ложными, всё остальное — истинным.</p>
+
+    <div class="info-box">
+        <strong>📌 Принцип работы:</strong><br>
+        • Если первый операнд <strong>true</strong> (не false и не nil) → возвращается первый операнд<br>
+        • Если первый операнд <strong>false</strong> или <strong>nil</strong> → возвращается второй операнд<br>
+        • Поддерживает «короткое замыкание»: второй операнд вычисляется только при необходимости
+    </div>
+
+    <h2>Примеры</h2>
+
+    <div class="code-block">
+<span class="comment">-- Базовое использование с булевыми значениями</span>
+<span class="keyword">print</span>(<span class="keyword">true</span> <span class="keyword">or</span> <span class="keyword">true</span>)    <span class="comment">--> true</span>
+<span class="keyword">print</span>(<span class="keyword">true</span> <span class="keyword">or</span> <span class="keyword">false</span>)   <span class="comment">--> true  (первый истинный, второй не вычисляется)</span>
+<span class="keyword">print</span>(<span class="keyword">false</span> <span class="keyword">or</span> <span class="keyword">true</span>)   <span class="comment">--> true</span>
+<span class="keyword">print</span>(<span class="keyword">false</span> <span class="keyword">or</span> <span class="keyword">false</span>)  <span class="comment">--> false</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Возврат небулевых значений (особенность Lua)</span>
+<span class="keyword">local</span> x = <span class="keyword">nil</span>
+<span class="keyword">local</span> y = <span class="number">20</span>
+
+<span class="keyword">local</span> result = x <span class="keyword">or</span> y
+<span class="keyword">print</span>(result)  <span class="comment">--> 20  (nil считается ложным, возвращается y)</span>
+
+<span class="keyword">local</span> name = <span class="string">"Анна"</span>
+<span class="keyword">local</span> default = <span class="string">"Гость"</span>
+<span class="keyword">print</span>(name <span class="keyword">or</span> default)   <span class="comment">--> Анна  (name истинен, возвращается name)</span>
+<span class="keyword">print</span>(<span class="keyword">nil</span> <span class="keyword">or</span> default)    <span class="comment">--> Гость (nil ложен, возвращается default)</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Использование в условных операторах</span>
+<span class="keyword">local</span> isWeekend = <span class="keyword">false</span>
+<span class="keyword">local</span> isHoliday = <span class="keyword">true</span>
+
+<span class="keyword">if</span> isWeekend <span class="keyword">or</span> isHoliday <span class="keyword">then</span>
+    <span class="keyword">print</span>(<span class="string">"Можно отдохнуть!"</span>)
+<span class="keyword">else</span>
+    <span class="keyword">print</span>(<span class="string">"Рабочий день"</span>)
+<span class="keyword">end</span>
+<span class="comment">--> Можно отдохнуть!</span>
+    </div>
+
+    <h2>Идиоматические паттерны</h2>
+
+    <div class="code-block">
+<span class="comment">-- Значение по умолчанию (самый частый паттерн)</span>
+<span class="keyword">local</span> config = {
+    timeout = <span class="keyword">nil</span>
+}
+
+<span class="keyword">local</span> timeout = config.timeout <span class="keyword">or</span> <span class="number">5000</span>
+<span class="keyword">print</span>(timeout)  <span class="comment">--> 5000 (значение по умолчанию)</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Тернарный оператор (вместе with and)</span>
+<span class="comment">-- x and y or z  работает как тернарный оператор</span>
+<span class="keyword">local</span> age = <span class="number">20</span>
+<span class="keyword">local</span> status = (age >= <span class="number">18</span>) <span class="keyword">and</span> <span class="string">"взрослый"</span> <span class="keyword">or</span> <span class="string">"ребёнок"</span>
+<span class="keyword">print</span>(status)  <span class="comment">--> взрослый</span>
+
+<span class="keyword">local</span> value = <span class="keyword">nil</span>
+<span class="keyword">local</span> result = value <span class="keyword">and</span> <span class="string">"есть значение"</span> <span class="keyword">or</span> <span class="string">"нет значения"</span>
+<span class="keyword">print</span>(result)  <span class="comment">--> нет значения</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Выбор первого не-nil значения из нескольких</span>
+<span class="keyword">local</span> a = <span class="keyword">nil</span>
+<span class="keyword">local</span> b = <span class="keyword">false</span>
+<span class="keyword">local</span> c = <span class="string">"значение"</span>
+<span class="keyword">local</span> d = <span class="string">"запасное"</span>
+
+<span class="keyword">local</span> first = a <span class="keyword">or</span> b <span class="keyword">or</span> c <span class="keyword">or</span> d
+<span class="keyword">print</span>(first)  <span class="comment">--> false (false не nil, поэтому он и вернулся)</span>
+
+<span class="comment">-- Внимание: false считается истинным для or</span>
+<span class="keyword">local</span> x = <span class="keyword">false</span>
+<span class="keyword">local</span> y = <span class="string">"default"</span>
+<span class="keyword">print</span>(x <span class="keyword">or</span> y)  <span class="comment">--> false (false не nil и не false? false — false, так что вернётся y?)</span>
+<span class="comment">-- На самом деле: x = false → первый операнд ложный → возвращается y</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Выбор первого не-nil и не-false значения</span>
+<span class="keyword">local</span> function <span class="function">firstTruthy</span>(...)
+    <span class="keyword">for</span> i = <span class="number">1</span>, <span class="keyword">select</span>(<span class="string">"#"</span>, ...) <span class="keyword">do</span>
+        <span class="keyword">local</span> val = <span class="keyword">select</span>(i, ...)
+        <span class="keyword">if</span> val <span class="keyword">and</span> val ~= <span class="keyword">false</span> <span class="keyword">then</span>
+            <span class="keyword">return</span> val
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    <span class="keyword">return</span> <span class="keyword">nil</span>
+<span class="keyword">end</span>
+
+<span class="keyword">print</span>(firstTruthy(<span class="keyword">nil</span>, <span class="keyword">false</span>, <span class="string">"hello"</span>, <span class="number">42</span>))  <span class="comment">--> hello</span>
+    </div>
+
+    <h2>Важные особенности</h2>
+
+    <div class="warning-box">
+        <strong>⚠️ Приоритет операторов:</strong><br>
+        <strong>and</strong> имеет более высокий приоритет, чем <strong>or</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="comment">-- Без скобок</span>
+<span class="keyword">local</span> a = <span class="keyword">true</span> <span class="keyword">or</span> <span class="keyword">false</span> <span class="keyword">and</span> <span class="keyword">false</span>
+<span class="comment">-- Эквивалентно: true or (false and false) → true</span>
+
+<span class="comment">-- Со скобками (другой порядок)</span>
+<span class="keyword">local</span> b = (<span class="keyword">true</span> <span class="keyword">or</span> <span class="keyword">false</span>) <span class="keyword">and</span> <span class="keyword">false</span>
+<span class="comment">-- (true or false) and false → true and false → false</span>
+
+<span class="keyword">print</span>(a, b)  <span class="comment">--> true    false</span>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ or возвращает значение, а не true/false</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="keyword">local</span> x = <span class="number">5</span>
+<span class="keyword">local</span> y = <span class="number">10</span>
+
+<span class="keyword">local</span> result = x <span class="keyword">or</span> y
+<span class="keyword">print</span>(result)  <span class="comment">--> 5  (не true, а само число 5!)</span>
+
+<span class="keyword">if</span> x <span class="keyword">or</span> y <span class="keyword">then</span>
+    <span class="keyword">print</span>(<span class="string">"Условие истинно"</span>)  <span class="comment">--> Это выполнится, т.к. 5 — истина</span>
+<span class="keyword">end</span>
+        </div>
+    </div>
+
+    <h2>Частые ошибки</h2>
+
+    <div class="warning-box">
+        <strong>❌ Путаница с false:</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="keyword">local</span> userInput = <span class="keyword">false</span>
+<span class="keyword">local</span> defaultValue = <span class="string">"default"</span>
+
+<span class="comment">-- Ожидание: вернётся defaultValue (ведь false — это ложь)</span>
+<span class="comment">-- Реальность: вернётся false (потому что false — это законное значение)</span>
+<span class="keyword">local</span> result = userInput <span class="keyword">or</span> defaultValue
+<span class="keyword">print</span>(result)  <span class="comment">--> false, а не "default"!</span>
+
+<span class="comment">-- Правильное решение: явная проверка на nil</span>
+<span class="keyword">local</span> result2 = (userInput == <span class="keyword">nil</span>) <span class="keyword">and</span> defaultValue <span class="keyword">or</span> userInput
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>❌ Забыто короткое замыкание:</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="comment">-- Функция, которая может вызвать ошибку</span>
+<span class="keyword">local</span> function <span class="function">risky</span>()
+    error(<span class="string">"Ошибка!"</span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- Эта строка НЕ вызовет ошибку, потому что первый аргумент true</span>
+<span class="keyword">local</span> safe = <span class="keyword">true</span> <span class="keyword">or</span> risky()  <span class="comment">--> risky() не вызывается</span>
+
+<span class="comment">-- А эта вызовет, потому что первый аргумент false</span>
+<span class="keyword">local</span> unsafe = <span class="keyword">false</span> <span class="keyword">or</span> risky()  <span class="comment">--> Ошибка!</span>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Полезный паттерн: memoization (кэширование)</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="keyword">local</span> function <span class="function">getData</span>()
+    <span class="keyword">local</span> cached = <span class="keyword">nil</span>
+
+    <span class="keyword">return</span> <span class="keyword">function</span>()
+        cached = cached <span class="keyword">or</span> <span class="function">expensiveCalculation</span>()
+        <span class="keyword">return</span> cached
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">-- expensiveCalculation() вызовется только один раз</span>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <a href="../syntax.html" class="btn">← Вернуться назад</a>
+    </div>
+</div>
+</body>
+</html>
