@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>false в Lua — логическое значение «ложь»</title>
+    <style>
+        body {
+            font-family: "Corbel", sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 900px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .top-nav {
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #1f618d;
+            text-decoration: underline;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .keyword-badge {
+            font-family: "Consolas", monospace;
+            background: #e8f4fd;
+            color: #d63384;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: "Consolas", monospace;
+            overflow-x: auto;
+            white-space: pre;
+            tab-size: 4;
+        }
+        .comment { color: #5c6370; font-style: italic; }
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .number { color: #d19a66; }
+        h2 {
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        .info-box {
+            background: #e8f4fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .warning-box {
+            background: #fff3e0;
+            border-left: 5px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white !important;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            .code-block { font-size: 0.85em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="top-nav">
+        <a href="../index.html" class="nav-link">← Назад к содержанию</a>
+    </div>
+
+    <div style="text-align: center;">
+        <div class="keyword-badge">❌ Ключевое слово: false</div>
+    </div>
+    <h1>Логическое значение «ложь» (false)</h1>
+
+    <p><strong>false</strong> — это одно из двух логических значений (boolean) в Lua. Вместе с <strong>true</strong> оно используется для управления потоком выполнения программы. В условных операторах <strong>false</strong> (наряду с <strong>nil</strong>) считается ложным значением.</p>
+
+    <div class="info-box">
+        <strong>📌 Важно:</strong><br>
+        • В Lua только <strong>false</strong> и <strong>nil</strong> являются ложными<br>
+        • Все остальные значения (включая <strong>0</strong>, <strong>""</strong>, <strong>{}</strong>) считаются истинными<br>
+        • <strong>false</strong> — это значение, а <strong>nil</strong> — отсутствие значения
+    </div>
+
+    <h2>Примеры</h2>
+
+    <div class="code-block">
+<span class="comment">-- Прямое использование false</span>
+<span class="keyword">local</span> isActive = <span class="keyword">false</span>
+
+<span class="keyword">if</span> isActive <span class="keyword">then</span>
+    <span class="keyword">print</span>(<span class="string">"Активно"</span>)
+<span class="keyword">else</span>
+    <span class="keyword">print</span>(<span class="string">"Неактивно"</span>)
+<span class="keyword">end</span>
+<span class="comment">--> Неактивно</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- false в логических операциях</span>
+<span class="keyword">print</span>(<span class="keyword">false</span> <span class="keyword">and</span> <span class="keyword">true</span>)   <span class="comment">--> false</span>
+<span class="keyword">print</span>(<span class="keyword">false</span> <span class="keyword">or</span> <span class="keyword">true</span>)    <span class="comment">--> true</span>
+<span class="keyword">print</span>(<span class="keyword">not</span> <span class="keyword">false</span>)         <span class="comment">--> true</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Сравнение false и nil</span>
+<span class="keyword">local</span> a = <span class="keyword">false</span>
+<span class="keyword">local</span> b = <span class="keyword">nil</span>
+
+<span class="keyword">if</span> a == <span class="keyword">nil</span> <span class="keyword">then</span>
+    <span class="keyword">print</span>(<span class="string">"false равен nil"</span>)
+<span class="keyword">else</span>
+    <span class="keyword">print</span>(<span class="string">"false не равен nil"</span>)
+<span class="keyword">end</span>
+<span class="comment">--> false не равен nil</span>
+
+<span class="comment">-- Оба ложные, но не равны друг другу</span>
+<span class="keyword">if</span> a == b <span class="keyword">then</span>
+    <span class="keyword">print</span>(<span class="string">"Равны"</span>)
+<span class="keyword">else</span>
+    <span class="keyword">print</span>(<span class="string">"Не равны"</span>)
+<span class="keyword">end</span>
+<span class="comment">--> Не равны</span>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Проверка на false</span>
+<span class="keyword">local</span> function <span class="function">processValue</span>(value)
+    <span class="keyword">if</span> value == <span class="keyword">false</span> <span class="keyword">then</span>
+        <span class="keyword">print</span>(<span class="string">"Получено явное false"</span>)
+    <span class="keyword">elseif</span> value == <span class="keyword">nil</span> <span class="keyword">then</span>
+        <span class="keyword">print</span>(<span class="string">"Получен nil"</span>)
+    <span class="keyword">else</span>
+        <span class="keyword">print</span>(<span class="string">"Получено истинное значение: "</span> .. tostring(value))
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+processValue(<span class="keyword">false</span>)   <span class="comment">--> Получено явное false</span>
+processValue(<span class="keyword">nil</span>)     <span class="comment">--> Получен nil</span>
+processValue(<span class="number">0</span>)       <span class="comment">--> Получено истинное значение: 0</span>
+    </div>
+
+    <h2>Важные особенности</h2>
+
+    <div class="warning-box">
+        <strong>⚠️ false не равен nil:</strong>
+        <div class="code-block" style="margin-top:10px;">
+<span class="comment">-- Оба ложные, но это разные значения</span>
+<span class="keyword">local</span> isEnabled = <span class="keyword">false</span>
+<span class="keyword">local</span> isSet = <span class="keyword">nil</span>
+
+<span class="comment">-- Разное поведение в or</span>
+<span class="keyword">local</span> result1 = isEnabled <span class="keyword">or</span> <span class="string">"default"</span>   <span class="comment">--> false (не "default"!)</span>
+<span class="keyword">local</span> result2 = isSet <span class="keyword">or</span> <span class="string">"default"</span>      <span class="comment">--> "default"</span>
+
+<span class="keyword">print</span>(result1, result2)
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Когда использовать false:</strong>
+        <ul>
+            <li>Явное указание «ложного» состояния (в отличие от «отсутствия» nil)</li>
+            <li>Возврат из функции, когда операция не удалась, но nil имеет другое значение</li>
+            <li>Флаги и переключатели</li>
+        </ul>
+    </div>
+
+    <div class="code-block">
+<span class="comment">-- Функция, которая может вернуть false (осмысленное значение)</span>
+<span class="keyword">local</span> function <span class="function">userHasPermission</span>(user, action)
+    <span class="keyword">if</span> <span class="keyword">not</span> user <span class="keyword">then</span>
+        <span class="keyword">return</span> <span class="keyword">nil</span>   <span class="comment">-- пользователь не существует</span>
+    <span class="keyword">end</span>
+    
+    <span class="comment">-- проверка прав</span>
+    <span class="keyword">if</span> user.role == <span class="string">"admin"</span> <span class="keyword">then</span>
+        <span class="keyword">return</span> <span class="keyword">true</span>
+    <span class="keyword">elseif</span> user.role == <span class="string">"guest"</span> <span class="keyword">then</span>
+        <span class="keyword">return</span> <span class="keyword">false</span>   <span class="comment">-- гость не имеет прав (осмысленный ответ)</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+    </div>
+
+    <div class="navigation">
+        <a href="../syntax.html" class="btn">← Вернуться назад</a>
+    </div>
+</div>
+</body>
+</html>
